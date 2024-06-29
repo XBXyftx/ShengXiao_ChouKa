@@ -68,6 +68,15 @@ struct Index {
           this.X = 1
           this.Y = 1
           this.randomNum = Math.floor(Math.random() * 6)
+
+          let num = 0
+          for (const item of this.images){
+            if (item) {
+              
+            }else {
+              break
+            }
+          }
         })
 
 
