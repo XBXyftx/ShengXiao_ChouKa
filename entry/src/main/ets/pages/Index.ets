@@ -16,6 +16,7 @@ struct Index {
     { ImgUrl: 'bg_04.png', num: 0 },
     { ImgUrl: 'bg_05.png', num: 0 },
   ]
+  Opacity: number = 0
 
   build() {
     //根组件
@@ -26,7 +27,7 @@ struct Index {
         ForEach(this.images, (item: Card, index: number) => {
           ListItem() {
             Badge({
-              value:`${item.num}`,
+              value: `${item.num}`,
               style: { badgeSize: 16, badgeColor: Color.Red }
             }) {
               Image($rawfile(`${item.ImgUrl}`))
@@ -40,8 +41,9 @@ struct Index {
       .height(300)
       .listDirection(Axis.Horizontal)
       .lanes(2)
-      .backgroundColor(Color.Pink)
+      // .backgroundColor(Color.Pink)
       .margin({ top: 80, bottom: 50 })
+      .zIndex(1)
 
 
       //立即抽卡按钮
@@ -53,16 +55,35 @@ struct Index {
             .backgroundColor('#ffd40a55')
           }
         })
+        .zIndex(1)
+        .onClick(() => {
+          this.Opacity = 1
+        })
 
 
       // 2：生效抽卡界面
-      Column(){
-
+      Column() {
+        Text('获得生肖卡')
+          .fontSize(25)
+          .fontColor('#F5EBCF')
+          .fontWeight(600)
+        Image($rawfile('img_00.png'))
+          .width(200)
+          .margin(30)
+        Button('开心收下')
+          .width(200)
+          .height(50)
+          .backgroundColor('rgb(0,0,0,0)')
+          .border({ width: 2, color: '#F5EBCF' })
+          .fontColor('#F5EBCF')
       }
       .width('100%')
       .height('100%')
       .backgroundColor('rgba(0,0,0,0.8)')
       .position({})
+      .zIndex(2)
+      .justifyContent(FlexAlign.Center)
+      .opacity(0) //日常隐藏获奖显示
 
       // 3：抽奖界面
     }
