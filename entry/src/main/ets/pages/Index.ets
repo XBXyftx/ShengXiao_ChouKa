@@ -16,7 +16,8 @@ struct Index {
     { ImgUrl: 'bg_04.png', num: 0 },
     { ImgUrl: 'bg_05.png', num: 0 },
   ]
-  Opacity: number = 0
+  @State Opacity: number = 0
+  @State ZIndex:number = 0
 
   build() {
     //根组件
@@ -58,10 +59,12 @@ struct Index {
         .zIndex(1)
         .onClick(() => {
           this.Opacity = 1
+          this.ZIndex = 2
         })
 
 
       // 2：生效抽卡界面
+
       Column() {
         Text('获得生肖卡')
           .fontSize(25)
@@ -76,14 +79,18 @@ struct Index {
           .backgroundColor('rgb(0,0,0,0)')
           .border({ width: 2, color: '#F5EBCF' })
           .fontColor('#F5EBCF')
+          .onClick(()=>{
+            this.ZIndex=0
+            this.Opacity=0
+          })
       }
       .width('100%')
       .height('100%')
       .backgroundColor('rgba(0,0,0,0.8)')
       .position({})
-      .zIndex(2)
+      .zIndex(this.ZIndex)
       .justifyContent(FlexAlign.Center)
-      .opacity(0) //日常隐藏获奖显示
+      .opacity(this.Opacity) //日常隐藏获奖显示
 
       // 3：抽奖界面
     }
