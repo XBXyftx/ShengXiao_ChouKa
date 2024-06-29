@@ -82,6 +82,7 @@ struct Index {
             const arr: string[] = ['hw.png', 'pg.png']
             let jiangpin: number = Math.floor(Math.random() * 2)
             this.jiangpin = arr[jiangpin]
+            this.ZIndex2=3
           }
         })
 
@@ -105,13 +106,14 @@ struct Index {
             .onClick(() => {
               this.zhongJiang = false
               this.images = [
-                { ImgUrl: 'bg_00.png', num: 0 }, //0
-                { ImgUrl: 'bg_01.png', num: 0 }, //1
-                { ImgUrl: 'bg_02.png', num: 0 }, //2
-                { ImgUrl: 'bg_03.png', num: 0 }, //3
-                { ImgUrl: 'bg_04.png', num: 0 }, //4
-                { ImgUrl: 'bg_05.png', num: 0 },//5
+                { ImgUrl: 'bg_00.png', num: 0 },
+                { ImgUrl: 'bg_01.png', num: 0 },
+                { ImgUrl: 'bg_02.png', num: 0 },
+                { ImgUrl: 'bg_03.png', num: 0 },
+                { ImgUrl: 'bg_04.png', num: 0 },
+                { ImgUrl: 'bg_05.png', num: 0 },
               ]
+              this.ZIndex2=0
             })
         }
         .width('100%')
@@ -119,7 +121,7 @@ struct Index {
         .backgroundColor('rgba(0,0,0,0.8)')
         .justifyContent(FlexAlign.Center)
         .position({})
-        .zIndex(3)
+        .zIndex(this.ZIndex2)
       } else {
         // 2：生肖抽卡界面
         Column() {
