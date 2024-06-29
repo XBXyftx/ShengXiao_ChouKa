@@ -144,13 +144,13 @@ struct Index {
         // 抽奖⻚⾯-遮罩层
         //中奖才显示
         Column({ space: 50 }) {
-          Text('恭喜获得⼿机⼀部')
+          Text('恭喜获得手机一部')
             .fontColor('#F5EBCF')
             .fontSize(25)
             .fontWeight(600)
           Image($rawfile(this.jiangpin))
             .width(300)
-          Button('再来⼀次')
+          Button('再来一次')
             .width(200)
             .height(50)
             .backgroundColor(Color.Transparent)
