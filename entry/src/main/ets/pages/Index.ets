@@ -62,6 +62,8 @@ struct Index {
         .onClick(() => {
           this.Opacity = 1
           this.ZIndex = 2
+          this.X = 1
+          this.Y = 1
         })
 
 
@@ -78,6 +80,9 @@ struct Index {
           .width(200)
           .margin(30)
           .scale({ x: this.X, y: this.Y })
+          .animation({
+            duration: 1000
+          })
 
         Button('开心收下')
           .width(200)
