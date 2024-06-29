@@ -22,7 +22,7 @@ struct Index {
   @State X: number = 0 //生肖图缩放动画控制状态
   @State Y: number = 0
   @State randomNum: number = 8
-  @State zhongJiang: Boolean = false
+  @State zhongJiang: boolean = false
 
   build() {
     //根组件
@@ -69,65 +69,23 @@ struct Index {
           this.Y = 1
           this.randomNum = Math.floor(Math.random() * 6)
 
-          let num = 0
-          for (const item of this.images) {
+          let count: number = 0
+          for (let item of this.images) {
             if (item.num >= 1) {
-              ++num
+              ++count
             } else {
               break
             }
           }
-          if (num == 6) {
+          if (count == 6) {
             this.zhongJiang = true
+            const arr:string[]=['hw.png','pg.png']
+            let jiangpin:number = Math.random()
           }
         })
 
 
-      // 2：生效抽卡界面
 
-      Column() {
-
-        Text('获得生肖卡')
-          .fontSize(25)
-          .fontColor('#F5EBCF')
-          .fontWeight(600)
-
-        Image($rawfile(`img_0${this.randomNum}.png`))
-          .width(200)
-          .margin(30)
-          .scale({ x: this.X, y: this.Y })
-          .animation({
-            duration: 1000
-          })
-
-        Button('开心收下')
-          .width(200)
-          .height(50)
-          .backgroundColor('rgb(0,0,0,0)')
-          .border({ width: 2, color: '#F5EBCF' })
-          .fontColor('#F5EBCF')
-          .onClick(() => {
-            this.ZIndex = 0
-            this.Opacity = 0
-            this.X = 0
-            this.Y = 0
-            this.images[this.randomNum] = {
-              ImgUrl: `img_0${this.randomNum}.png`,
-              num: ++this.images[this.randomNum].num
-            }
-          })
-          .animation({
-            duration: 0
-          })
-
-      }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('rgba(0,0,0,0.8)')
-      .position({})
-      .zIndex(this.ZIndex)
-      .justifyContent(FlexAlign.Center)
-      .opacity(this.Opacity) //日常隐藏获奖显示
 
       // 3：抽奖界面
       // 抽奖⻚⾯-遮罩层
@@ -151,6 +109,53 @@ struct Index {
         .backgroundColor('rgba(0,0,0,0.8)')
         .justifyContent(FlexAlign.Center)
         .position({})
+        .zIndex(3)
+      }else {
+        // 2：生效抽卡界面
+
+        Column() {
+
+          Text('获得生肖卡')
+            .fontSize(25)
+            .fontColor('#F5EBCF')
+            .fontWeight(600)
+
+          Image($rawfile(`img_0${this.randomNum}.png`))
+            .width(200)
+            .margin(30)
+            .scale({ x: this.X, y: this.Y })
+            .animation({
+              duration: 1000
+            })
+
+          Button('开心收下')
+            .width(200)
+            .height(50)
+            .backgroundColor('rgb(0,0,0,0)')
+            .border({ width: 2, color: '#F5EBCF' })
+            .fontColor('#F5EBCF')
+            .onClick(() => {
+              this.ZIndex = 0
+              this.Opacity = 0
+              this.X = 0
+              this.Y = 0
+              this.images[this.randomNum] = {
+                ImgUrl: `img_0${this.randomNum}.png`,
+                num: ++this.images[this.randomNum].num
+              }
+            })
+            .animation({
+              duration: 0
+            })
+
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgba(0,0,0,0.8)')
+        .position({})
+        .zIndex(this.ZIndex)
+        .justifyContent(FlexAlign.Center)
+        .opacity(this.Opacity) //日常隐藏获奖显示
       }
 
 
