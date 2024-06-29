@@ -22,7 +22,7 @@ struct Index {
   @State X: number = 0 //生肖图缩放动画控制状态
   @State Y: number = 0
   @State randomNum: number = 8
-  @State zhongJiang:Boolean = false
+  @State zhongJiang: Boolean = false
 
   build() {
     //根组件
@@ -70,12 +70,15 @@ struct Index {
           this.randomNum = Math.floor(Math.random() * 6)
 
           let num = 0
-          for (const item of this.images){
-            if (item) {
-              
-            }else {
+          for (const item of this.images) {
+            if (item.num >= 1) {
+              ++num
+            } else {
               break
             }
+          }
+          if (num == 6) {
+            this.zhongJiang = true
           }
         })
 
@@ -129,7 +132,7 @@ struct Index {
       // 3：抽奖界面
       // 抽奖⻚⾯-遮罩层
       //中奖才显示
-      if (this.zhongJiang){
+      if (this.zhongJiang) {
         Column({ space: 50 }) {
           Text('恭喜获得⼿机⼀部')
             .fontColor('#F5EBCF')
