@@ -118,6 +118,7 @@ struct Index {
 
       // 3：抽奖界面
       // 抽奖⻚⾯-遮罩层
+      //中奖才显示
       Column({ space: 50 }) {
         Text('恭喜获得⼿机⼀部')
           .fontColor('#F5EBCF')
@@ -135,8 +136,8 @@ struct Index {
       .height('100%')
       .backgroundColor('rgba(0,0,0,0.8)')
       .justifyContent(FlexAlign.Center)
-      .position({ x: 0, y: 0 })
-      .zIndex(this.ZIndex2)
+      .position({})
+      // .zIndex(this.ZIndex2)
 
     }
     .width('100%')
