@@ -19,8 +19,8 @@ struct Index {
   @State Opacity: number = 0
   @State ZIndex: number = 0
   @State X: number = 0 //生肖图缩放动画控制状态
-  @State Y: number = 1
-  @State randomNum: number = 0
+  @State Y: number = 0
+  @State randomNum: number = 8
 
   build() {
     //根组件
@@ -65,7 +65,7 @@ struct Index {
           this.ZIndex = 2
           this.X = 1
           this.Y = 1
-          Math.floor(Math.random() * 6)
+          this.randomNum = Math.floor(Math.random() * 6)
         })
 
 
@@ -78,7 +78,7 @@ struct Index {
           .fontColor('#F5EBCF')
           .fontWeight(600)
 
-        Image($rawfile('img_00.png'))
+        Image($rawfile(`img_0${this.randomNum}.png`))
           .width(200)
           .margin(30)
           .scale({ x: this.X, y: this.Y })
@@ -97,6 +97,9 @@ struct Index {
             this.Opacity = 0
             this.X = 0
             this.Y = 0
+          })
+          .animation({
+            duration:0
           })
 
       }
