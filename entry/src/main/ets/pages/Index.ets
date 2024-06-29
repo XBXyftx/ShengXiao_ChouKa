@@ -9,15 +9,16 @@ interface Card {
 struct Index {
   @State
   images: Card[] = [
-    { ImgUrl: 'bg_00.png', num: 0 },//0
-    { ImgUrl: 'bg_01.png', num: 0 },//1
-    { ImgUrl: 'bg_02.png', num: 0 },//2
-    { ImgUrl: 'bg_03.png', num: 0 },//3
-    { ImgUrl: 'bg_04.png', num: 0 },//4
+    { ImgUrl: 'bg_00.png', num: 0 }, //0
+    { ImgUrl: 'bg_01.png', num: 0 }, //1
+    { ImgUrl: 'bg_02.png', num: 0 }, //2
+    { ImgUrl: 'bg_03.png', num: 0 }, //3
+    { ImgUrl: 'bg_04.png', num: 0 }, //4
     { ImgUrl: 'bg_05.png', num: 0 },//5
   ]
   @State Opacity: number = 0
   @State ZIndex: number = 0
+  @State ZIndex2: number = 0
   @State X: number = 0 //生肖图缩放动画控制状态
   @State Y: number = 0
   @State randomNum: number = 8
@@ -97,13 +98,13 @@ struct Index {
             this.Opacity = 0
             this.X = 0
             this.Y = 0
-            this.images[this.randomNum]={
-              ImgUrl:`img_0${this.randomNum}.png`,
-              num:++this.images[this.randomNum].num
+            this.images[this.randomNum] = {
+              ImgUrl: `img_0${this.randomNum}.png`,
+              num: ++this.images[this.randomNum].num
             }
           })
           .animation({
-            duration:0
+            duration: 0
           })
 
       }
@@ -116,6 +117,27 @@ struct Index {
       .opacity(this.Opacity) //日常隐藏获奖显示
 
       // 3：抽奖界面
+      // 抽奖⻚⾯-遮罩层
+      Column({ space: 50 }) {
+        Text('恭喜获得⼿机⼀部')
+          .fontColor('#F5EBCF')
+          .fontSize(25)
+          .fontWeight(600)
+        Image($rawfile('hw.png'))
+          .width(300)
+        Button('再来⼀次')
+          .width(200)
+          .height(50)
+          .backgroundColor(Color.Transparent)
+          .border({ width: 2, color: '#FFF9E0' })
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('rgba(0,0,0,0.8)')
+      .justifyContent(FlexAlign.Center)
+      .position({ x: 0, y: 0 })
+      .zIndex(this.ZIndex2)
+
     }
     .width('100%')
     .height('100%')
