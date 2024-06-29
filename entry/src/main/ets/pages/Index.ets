@@ -48,7 +48,6 @@ struct Index {
       .height(300)
       .listDirection(Axis.Horizontal)
       .lanes(2)
-      // .backgroundColor(Color.Pink)
       .margin({ top: 80, bottom: 50 })
       .zIndex(1)
 
@@ -96,7 +95,7 @@ struct Index {
             .fontColor('#F5EBCF')
             .fontSize(25)
             .fontWeight(600)
-          Image($rawfile('hw.png'))
+          Image($rawfile(this.jiangpin))
             .width(300)
           Button('再来⼀次')
             .width(200)
