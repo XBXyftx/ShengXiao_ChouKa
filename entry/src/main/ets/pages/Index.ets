@@ -68,14 +68,17 @@ struct Index {
       // 2：生效抽卡界面
 
       Column() {
+
         Text('获得生肖卡')
           .fontSize(25)
           .fontColor('#F5EBCF')
           .fontWeight(600)
+
         Image($rawfile('img_00.png'))
           .width(200)
           .margin(30)
           .scale({ x: this.X, y: this.Y })
+
         Button('开心收下')
           .width(200)
           .height(50)
@@ -86,6 +89,7 @@ struct Index {
             this.ZIndex = 0
             this.Opacity = 0
           })
+
       }
       .width('100%')
       .height('100%')
