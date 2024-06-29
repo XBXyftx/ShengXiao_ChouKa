@@ -99,7 +99,7 @@ struct Index {
             this.Y = 0
             this.images[this.randomNum]={
               ImgUrl:`img_0${this.randomNum}.png`,
-              num:10
+              num:++this.images[this.randomNum].num
             }
           })
           .animation({
