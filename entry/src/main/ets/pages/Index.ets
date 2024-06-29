@@ -23,7 +23,7 @@ struct Index {
   @State Y: number = 0
   @State randomNum: number = 8
   @State zhongJiang: boolean = false
-  @State jiangpin:string = ''
+  @State jiangpin: string = ''
 
   build() {
     //根组件
@@ -79,9 +79,9 @@ struct Index {
           }
           if (count == 6) {
             this.zhongJiang = true
-            const arr:string[]=['hw.png','pg.png']
-            let jiangpin:number = Math.floor(Math.random()*2)
-            this.jiangpin=arr[jiangpin]
+            const arr: string[] = ['hw.png', 'pg.png']
+            let jiangpin: number = Math.floor(Math.random() * 2)
+            this.jiangpin = arr[jiangpin]
           }
         })
 
@@ -102,6 +102,17 @@ struct Index {
             .height(50)
             .backgroundColor(Color.Transparent)
             .border({ width: 2, color: '#FFF9E0' })
+            .onClick(() => {
+              this.zhongJiang = false
+              this.images = [
+                { ImgUrl: 'bg_00.png', num: 0 }, //0
+                { ImgUrl: 'bg_01.png', num: 0 }, //1
+                { ImgUrl: 'bg_02.png', num: 0 }, //2
+                { ImgUrl: 'bg_03.png', num: 0 }, //3
+                { ImgUrl: 'bg_04.png', num: 0 }, //4
+                { ImgUrl: 'bg_05.png', num: 0 },//5
+              ]
+            })
         }
         .width('100%')
         .height('100%')
@@ -109,7 +120,7 @@ struct Index {
         .justifyContent(FlexAlign.Center)
         .position({})
         .zIndex(3)
-      }else {
+      } else {
         // 2：生肖抽卡界面
         Column() {
 
