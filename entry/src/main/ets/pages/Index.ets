@@ -23,6 +23,7 @@ struct Index {
   @State Y: number = 0
   @State randomNum: number = 8
   @State zhongJiang: boolean = false
+  @State jiangpin:string = ''
 
   build() {
     //根组件
@@ -80,17 +81,16 @@ struct Index {
           if (count == 6) {
             this.zhongJiang = true
             const arr:string[]=['hw.png','pg.png']
-            let jiangpin:number = Math.random()
+            let jiangpin:number = Math.floor(Math.random()*2)
+            this.jiangpin=arr[jiangpin]
           }
         })
 
-
-
-
-      // 3：抽奖界面
-      // 抽奖⻚⾯-遮罩层
-      //中奖才显示
+      //遮盖层条件渲染
       if (this.zhongJiang) {
+        // 3：抽奖界面
+        // 抽奖⻚⾯-遮罩层
+        //中奖才显示
         Column({ space: 50 }) {
           Text('恭喜获得⼿机⼀部')
             .fontColor('#F5EBCF')
@@ -111,8 +111,7 @@ struct Index {
         .position({})
         .zIndex(3)
       }else {
-        // 2：生效抽卡界面
-
+        // 2：生肖抽卡界面
         Column() {
 
           Text('获得生肖卡')
