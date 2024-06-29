@@ -9,12 +9,12 @@ interface Card {
 struct Index {
   @State
   images: Card[] = [
-    { ImgUrl: 'bg_00.png', num: 0 },
-    { ImgUrl: 'bg_01.png', num: 0 },
-    { ImgUrl: 'bg_02.png', num: 0 },
-    { ImgUrl: 'bg_03.png', num: 0 },
-    { ImgUrl: 'bg_04.png', num: 0 },
-    { ImgUrl: 'bg_05.png', num: 0 },
+    { ImgUrl: 'bg_00.png', num: 0 },//0
+    { ImgUrl: 'bg_01.png', num: 0 },//1
+    { ImgUrl: 'bg_02.png', num: 0 },//2
+    { ImgUrl: 'bg_03.png', num: 0 },//3
+    { ImgUrl: 'bg_04.png', num: 0 },//4
+    { ImgUrl: 'bg_05.png', num: 0 },//5
   ]
   @State Opacity: number = 0
   @State ZIndex: number = 0
@@ -97,6 +97,10 @@ struct Index {
             this.Opacity = 0
             this.X = 0
             this.Y = 0
+            this.images[this.randomNum]={
+              ImgUrl:`img_0${this.randomNum}.png`,
+              num:10
+            }
           })
           .animation({
             duration:0
