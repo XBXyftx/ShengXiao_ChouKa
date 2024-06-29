@@ -17,9 +17,9 @@ struct Index {
     { ImgUrl: 'bg_05.png', num: 0 },
   ]
   @State Opacity: number = 0
-  @State ZIndex:number = 0
-  @State X:number=0//生肖图缩放动画控制状态
-  @State Y:number=1
+  @State ZIndex: number = 0
+  @State X: number = 0 //生肖图缩放动画控制状态
+  @State Y: number = 1
 
   build() {
     //根组件
@@ -75,15 +75,16 @@ struct Index {
         Image($rawfile('img_00.png'))
           .width(200)
           .margin(30)
+          .scale({ x: this.X, y: this.Y })
         Button('开心收下')
           .width(200)
           .height(50)
           .backgroundColor('rgb(0,0,0,0)')
           .border({ width: 2, color: '#F5EBCF' })
           .fontColor('#F5EBCF')
-          .onClick(()=>{
-            this.ZIndex=0
-            this.Opacity=0
+          .onClick(() => {
+            this.ZIndex = 0
+            this.Opacity = 0
           })
       }
       .width('100%')
