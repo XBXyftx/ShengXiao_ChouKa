@@ -137,6 +137,7 @@ struct Index {
       .backgroundColor('rgba(0,0,0,0.8)')
       .justifyContent(FlexAlign.Center)
       .position({})
+
       // .zIndex(this.ZIndex2)
 
     }
