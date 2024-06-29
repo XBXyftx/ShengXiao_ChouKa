@@ -93,6 +93,8 @@ struct Index {
           .onClick(() => {
             this.ZIndex = 0
             this.Opacity = 0
+            this.X = 0
+            this.Y = 0
           })
 
       }
