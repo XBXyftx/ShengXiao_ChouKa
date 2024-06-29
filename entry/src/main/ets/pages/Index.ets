@@ -69,22 +69,74 @@ struct Index {
           this.Y = 1
           this.randomNum = Math.floor(Math.random() * 6)
 
-          let count: number = 0
-          for (let item of this.images) {
-            if (item.num >= 1) {
-              ++count
-            } else {
-              break
-            }
-          }
-          if (count == 6) {
-            this.zhongJiang = true
-            const arr: string[] = ['hw.png', 'pg.png']
-            let jiangpin: number = Math.floor(Math.random() * 2)
-            this.jiangpin = arr[jiangpin]
-            this.ZIndex2=3
-          }
+
         })
+
+
+      // 2：生肖抽卡界面
+      Column() {
+
+        Text('获得生肖卡')
+          .fontSize(25)
+          .fontColor('#F5EBCF')
+          .fontWeight(600)
+
+        Image($rawfile(`img_0${this.randomNum}.png`))
+          .width(200)
+          .margin(30)
+          .scale({ x: this.X, y: this.Y })
+          .animation({
+            duration: 1000
+          })
+
+        Button('开心收下')
+          .width(200)
+          .height(50)
+          .backgroundColor('rgb(0,0,0,0)')
+          .border({ width: 2, color: '#F5EBCF' })
+          .fontColor('#F5EBCF')
+          .onClick(() => {
+            this.ZIndex = 0
+            this.ZIndex2 = 0
+            this.Opacity = 0
+            this.X = 0
+            this.Y = 0
+            this.images[this.randomNum] = {
+              ImgUrl: `img_0${this.randomNum}.png`,
+              num: ++this.images[this.randomNum].num
+            }
+            let count: number = 0
+            for (let item of this.images) {
+              if (item.num >= 1) {
+                ++count
+              } else {
+                break
+              }
+            }
+            if (count == 6) {
+              this.zhongJiang = true
+              const arr: string[] = ['hw.png', 'pg.png']
+              let jiangpin: number = Math.floor(Math.random() * 2)
+              this.jiangpin = arr[jiangpin]
+              this.ZIndex2 = 3
+            } else {
+              this.ZIndex2 = 0
+              this.ZIndex = 2
+            }
+          })
+          .animation({
+            duration: 0
+          })
+
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('rgba(0,0,0,0.8)')
+      .position({})
+      .zIndex(this.ZIndex)
+      .justifyContent(FlexAlign.Center)
+      .opacity(this.Opacity) //日常隐藏获奖显示
+
 
       //遮盖层条件渲染
       if (this.zhongJiang) {
@@ -113,7 +165,8 @@ struct Index {
                 { ImgUrl: 'bg_04.png', num: 0 },
                 { ImgUrl: 'bg_05.png', num: 0 },
               ]
-              this.ZIndex2=0
+              this.ZIndex2 = 0
+              this.ZIndex = 0
             })
         }
         .width('100%')
@@ -122,51 +175,6 @@ struct Index {
         .justifyContent(FlexAlign.Center)
         .position({})
         .zIndex(this.ZIndex2)
-      } else {
-        // 2：生肖抽卡界面
-        Column() {
-
-          Text('获得生肖卡')
-            .fontSize(25)
-            .fontColor('#F5EBCF')
-            .fontWeight(600)
-
-          Image($rawfile(`img_0${this.randomNum}.png`))
-            .width(200)
-            .margin(30)
-            .scale({ x: this.X, y: this.Y })
-            .animation({
-              duration: 1000
-            })
-
-          Button('开心收下')
-            .width(200)
-            .height(50)
-            .backgroundColor('rgb(0,0,0,0)')
-            .border({ width: 2, color: '#F5EBCF' })
-            .fontColor('#F5EBCF')
-            .onClick(() => {
-              this.ZIndex = 0
-              this.Opacity = 0
-              this.X = 0
-              this.Y = 0
-              this.images[this.randomNum] = {
-                ImgUrl: `img_0${this.randomNum}.png`,
-                num: ++this.images[this.randomNum].num
-              }
-            })
-            .animation({
-              duration: 0
-            })
-
-        }
-        .width('100%')
-        .height('100%')
-        .backgroundColor('rgba(0,0,0,0.8)')
-        .position({})
-        .zIndex(this.ZIndex)
-        .justifyContent(FlexAlign.Center)
-        .opacity(this.Opacity) //日常隐藏获奖显示
       }
 
 
