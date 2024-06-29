@@ -9,7 +9,9 @@ struct Index {
       //1：初始界面
       List(){
         ListItem(){
-          Text('1')
+          Badge(){
+            Image($rawfile())
+          }
         }
       }
       .height(300)
