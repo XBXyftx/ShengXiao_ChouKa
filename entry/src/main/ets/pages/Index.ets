@@ -22,6 +22,7 @@ struct Index {
   @State X: number = 0 //生肖图缩放动画控制状态
   @State Y: number = 0
   @State randomNum: number = 8
+  @State zhongJiang:Boolean = false
 
   build() {
     //根组件
