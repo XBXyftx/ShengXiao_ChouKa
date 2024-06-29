@@ -18,6 +18,8 @@ struct Index {
   ]
   @State Opacity: number = 0
   @State ZIndex:number = 0
+  @State X:number=0//生肖图缩放动画控制状态
+  @State Y:number=1
 
   build() {
     //根组件
