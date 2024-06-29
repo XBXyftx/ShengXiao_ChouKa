@@ -20,6 +20,7 @@ struct Index {
   @State ZIndex: number = 0
   @State X: number = 0 //生肖图缩放动画控制状态
   @State Y: number = 1
+  @State randomNum: number = 0
 
   build() {
     //根组件
@@ -64,6 +65,7 @@ struct Index {
           this.ZIndex = 2
           this.X = 1
           this.Y = 1
+          Math.floor(Math.random() * 6)
         })
 
 
