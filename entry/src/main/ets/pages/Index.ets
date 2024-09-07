@@ -132,7 +132,7 @@ struct Index {
       .width('100%')
       .height('100%')
       .backgroundColor('rgba(0,0,0,0.8)')
-      .position({})
+      .position({x:0,y:0})
       .zIndex(this.ZIndex)
       .justifyContent(FlexAlign.Center)
       .opacity(this.Opacity) //日常隐藏获奖显示
